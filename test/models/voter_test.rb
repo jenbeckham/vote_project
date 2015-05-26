@@ -2,10 +2,12 @@ require 'test_helper'
 
 class VoterTest < ActiveSupport::TestCase
   test "name" do
-    assert true
+    one = Voter.new(party: "democrate")
+    refute one.save
   end
 
   test "party" do
-    assert true
+    two = Voter.new(name: "Heather Dom")
+    refute two.save
   end
 end
