@@ -29,4 +29,14 @@ class CandidateTest < ActiveSupport::TestCase
   #   assert_equal 2, bill.count
   # end
 
+  test "candidate total votes" do
+    bob = Candidate.create(name: "Bob Richard III", district: "2", home: "durham", party: "independent")
+    jim = Candidate.create(name: "Jim Rich", district: "2", home: "durham", party: "democrat")
+    vote_1 = Vote.create(voter_id: 1, candidate_id: bob.id)
+    vote_2 = Vote.create(voter_id: 1, candidate_id: jim.id)
+    vote_3 = Vote.create(voter_id: 2, candidate_id: bob.id)
+    assert_equal 2, bob.candidate_total_votes
+    assert_equal 1, jim.candidate_total_votes
+  end
+
 end
