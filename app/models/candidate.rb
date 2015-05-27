@@ -7,8 +7,8 @@ class Candidate < ActiveRecord::Base
   validates :district, presence: true
   validates :party, presence: true
 
-  def candidate_total_votes
-    candidate_total = Vote.select {|vote| vote.candidate_id == self.id}
-    candidate_total.count
+  def total_votes
+    total = Vote.select {|vote| vote.candidate_id == self.id}
+    total.count
   end
 end
