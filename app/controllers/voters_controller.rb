@@ -9,10 +9,12 @@ class VotersController < ApplicationController
   end
 
   def show
-    render json: Voter.find_by_security_key(params[:security_key])
+    before_action :require_security_key
+    render json: Voter.find_by_id(params[:id])
   end
 
   def update
+    before_action :require_security_key
     voter = Voter.find_by_id(params[:id])
     voter.update({:name => voter.name, :party => voter.party})
     render json: voter

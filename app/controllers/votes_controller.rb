@@ -6,6 +6,7 @@ class VotesController < ApplicationController
   def create
     vote = Vote.new(voter_id: params[:voter_id],
         candidate_id: params[:candidate_id], race_id: params[:race_id])
+    before_action :require_security_key
     if vote.save
       render json: vote
     else
