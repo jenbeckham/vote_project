@@ -13,8 +13,8 @@ class VoteTest < ActiveSupport::TestCase
 
   test "vote_id" do
     tom = Voter.create(name: "Tom", party: "Republican")
-    vote_1 = Vote.new(voter_id: tom.id, candidate_id: 2)
-    vote_2 = Vote.new(voter_id: tom.id, candidate_id: 2)
+    vote_1 = Vote.new(voter_id: tom.id, candidate_id: 1, race_id: 1)
+    vote_2 = Vote.new(voter_id: tom.id, candidate_id: 2, race_id: 1)
     assert vote_1.save
     refute vote_2.save
   end

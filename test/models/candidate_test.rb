@@ -2,24 +2,25 @@ require 'test_helper'
 
 class CandidateTest < ActiveSupport::TestCase
   test "name" do
-    one = Candidate.new(home: "Charlotte", district: "2", party: "independent")
+    one = Candidate.new(home: "Charlotte", district: "2", party: "independent", race_id: 1)
     refute one.save
   end
 
   test "home" do
-    two = Candidate.new(name: "Howard Richard III", district: "2", party: "independent")
+    two = Candidate.new(name: "Howard Richard III", district: "2", party: "independent", race_id: 1)
     refute two.save
   end
 
   test "district" do
-    three = Candidate.new(name: "Howard Richard III", home: "Raleigh", party: "independent")
+    three = Candidate.new(name: "Howard Richard III", home: "Raleigh", party: "independent", race_id: 2)
     refute three.save
   end
 
   test "party" do
-    four = Candidate.new(name: "Howard Richard III", district: "2", home: "durham")
+    four = Candidate.new(name: "Howard Richard III", district: "2", home: "durham", race_id: 3)
     refute four.save
   end
+
 
   # test "vote association" do
   #   bill = Candidate.create(name: "Bill Watson", district: "1", home: "Chapel Hill", party: "democrat")
@@ -30,8 +31,8 @@ class CandidateTest < ActiveSupport::TestCase
   # end
 
   test "candidate total votes" do
-    bob = Candidate.create(name: "Bob Richard III", district: "2", home: "durham", party: "independent")
-    jim = Candidate.create(name: "Jim Rich", district: "2", home: "durham", party: "democrat")
+    bob = Candidate.create(name: "Bob Richard III", district: "2", home: "durham", party: "independent", race_id: 3)
+    jim = Candidate.create(name: "Jim Rich", district: "2", home: "durham", party: "democrat", race_id: 3)
     vote_1 = Vote.create(voter_id: 1, candidate_id: bob.id)
     vote_2 = Vote.create(voter_id: 1, candidate_id: jim.id)
     vote_3 = Vote.create(voter_id: 2, candidate_id: bob.id)

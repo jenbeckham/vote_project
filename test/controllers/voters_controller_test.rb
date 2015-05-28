@@ -10,9 +10,9 @@ class VotersControllerTest < ActionController::TestCase
   test "should be able to show" do
     allen = Voter.create(name: "Allen Thomas", party: "Republican")
     ralph = Voter.create(name: "Ralph George", party: "Democrat")
-      get :show, id: allen.id
-    assert response.body =~ /"Allen Thomas"/
-    refute response.body =~ /"Ralph George"/
+      get :show, security_key: allen.security_key
+      assert response.body =~ /"Allen Thomas"/
+      refute response.body =~ /"Ralph George"/
   end
 
   test "should be able to update" do

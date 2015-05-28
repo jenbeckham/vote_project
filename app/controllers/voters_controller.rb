@@ -9,7 +9,7 @@ class VotersController < ApplicationController
   end
 
   def show
-    render json: Voter.find_by_id(params[:id])
+    render json: Voter.find_by_security_key(params[:security_key])
   end
 
   def update
