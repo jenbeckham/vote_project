@@ -12,8 +12,9 @@ class VotesControllerTest < ActionController::TestCase
     end
   end
 
-  test "should be able to destroy"
-    assert_difference(Vote.count)
-    delete :destroy, {voter_id: 1, candidate_id: 1, race_id: 2}
+  test "should be able to destroy" do
+    assert_difference("Vote.count") do
+      delete :destroy, {voter_id: 1, candidate_id: 1, race_id: 2}
+    end
   end
 end
